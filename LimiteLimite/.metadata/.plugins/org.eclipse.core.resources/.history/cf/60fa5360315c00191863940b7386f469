@@ -1,0 +1,30 @@
+package fr.formation.cartes;
+
+public class CarteATrou extends Carte {
+	
+	
+	private int temps;
+	
+	
+	
+	public CarteATrou() {
+		this.setTemps(30);
+	}
+
+
+
+	public int getTemps() {
+		return temps;
+	}
+
+
+
+	public void setTemps(int temps) {
+		this.temps = temps;
+	}
+
+	
+	
+	
+	
+}

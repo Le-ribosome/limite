@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.persistence.Table"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.NotEmpty"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="javax.persistence.Inheritance"/>
+<fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+<fullyQualifiedTypeName name="javax.persistence.Transient"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="fr.formation.dao.IDAOJoueur"/>
+<fullyQualifiedTypeName name="fr.formation.dao.hibernate.DAOJoueurHibernate"/>
+<fullyQualifiedTypeName name="fr.formation.joueur.PseudoDejaPrisException"/>
+<fullyQualifiedTypeName name="fr.formation.jeu.Participation"/>
+<fullyQualifiedTypeName name="fr.formation.dao.hibernate.DAOParticipationHibernate"/>
+<fullyQualifiedTypeName name="fr.formation.dao.IDAOCartePhrase"/>
+<fullyQualifiedTypeName name="fr.formation.dao.hibernate.DAOCartePhraseHibernate"/>
+<fullyQualifiedTypeName name="fr.formation.dao.IDAOCarteMotDefini"/>
+<fullyQualifiedTypeName name="fr.formation.dao.hibernate.DAOCarteMotDefiniHibernate"/>
+<fullyQualifiedTypeName name="fr.formation.cartes.CartePhrase"/>
+<fullyQualifiedTypeName name="fr.formation.cartes.CarteMotDefini"/>
+<fullyQualifiedTypeName name="fr.formation.dao.IDAOPartie"/>
+<fullyQualifiedTypeName name="fr.formation.dao.hibernate.DAOPartieHibernate"/>
+<fullyQualifiedTypeName name="fr.formation.jeu.Tour"/>
+</qualifiedTypeNameHistroy>

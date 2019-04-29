@@ -1,0 +1,43 @@
+package fr.formation.cartes;
+
+import fr.formation.joueur.Joueur;
+
+public class CarteMotDefini extends CarteMot {
+
+	
+	//private String mot; defini dans carteMot
+	private Joueur possesseurDeLaCarte;
+	
+	
+	
+	public Joueur getPossesseurDeLaCarte() {
+		return possesseurDeLaCarte;
+	}
+
+	public void setPossesseurDeLaCarte(Joueur possesseurDeLaCarte) {
+		this.possesseurDeLaCarte = possesseurDeLaCarte;
+	}
+
+	public CarteMotDefini(String mot) {
+		this.mot = mot;
+	}
+	
+	public CarteMotDefini() {
+		
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getMot() {
+		return mot;
+	}
+	public void setMot(String mot) {
+		this.mot = mot;
+	}
+	
+	
+}

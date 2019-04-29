@@ -1,0 +1,36 @@
+package fr.formation.cartes;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cartephrase")
+@AttributeOverrides({
+@AttributeOverride(name="id", column=@Column(name="CPH_ID")),
+@AttributeOverride(name="temps", column=@Column(name="CPH_TEMPS")),
+@AttributeOverride(name="categorie", column=@Column(name="CPH_CATEGORIE")),
+@AttributeOverride(name="points", column=@Column(name="CPH_POINTS", nullable = false))
+
+})
+public class CarteMotDefini extends CarteMot {
+
+
+	//int id defini dans Carte
+	//String categorie defini dans Carte
+	// String mot; definin dans CarteMot
+	// Joueur possesseurDeLaCarte; definin dans CarteMot
+
+	public CarteMotDefini() {
+		
+	}
+	
+	public CarteMotDefini(String mot) {
+		this.mot=mot;
+	}
+	
+	
+	
+}

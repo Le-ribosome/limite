@@ -1,0 +1,10 @@
+package fr.formation.cartes.copy;
+
+public class CarteJournal extends CarteATrou {
+
+	public CarteJournal() {
+		this.setCategorie("journal");
+	}
+	
+	
+}

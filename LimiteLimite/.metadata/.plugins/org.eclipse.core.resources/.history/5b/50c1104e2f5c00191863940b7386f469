@@ -1,0 +1,35 @@
+package fr.formation.cartes;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.MappedSuperclass;
+
+
+@MappedSuperclass
+public class Carte {
+	
+	protected int id;
+	protected String categorie;
+	
+	public Carte() {
+
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+	
+}
+	

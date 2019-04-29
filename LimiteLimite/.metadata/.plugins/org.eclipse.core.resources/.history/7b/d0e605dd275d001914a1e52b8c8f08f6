@@ -1,0 +1,252 @@
+package fr.formation.Limite_java;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import fr.formation.cartes.CarteMotDefini;
+import fr.formation.cartes.CartePhrase;
+import fr.formation.cartes.Paquet;
+import fr.formation.dao.IDAOCarteMotDefini;
+import fr.formation.dao.IDAOCartePhrase;
+import fr.formation.dao.IDAOJoueur;
+import fr.formation.dao.IDAOParticipation;
+import fr.formation.dao.hibernate.DAOCarteMotDefiniHibernate;
+import fr.formation.dao.hibernate.DAOCartePhraseHibernate;
+import fr.formation.dao.hibernate.DAOJoueurHibernate;
+import fr.formation.dao.hibernate.DAOParticipationHibernate;
+import fr.formation.jeu.Participation;
+import fr.formation.jeu.Partie;
+import fr.formation.jeu.Tour;
+import fr.formation.joueur.Equipe;
+import fr.formation.joueur.Joueur;
+
+public class Application {
+
+	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("NomPersistenceUnit"); 
+	static EntityManager em = emf.createEntityManager();
+	
+	@SuppressWarnings("unused")
+	public static void main(String[] args) {
+		
+		IDAOJoueur daoJoueur = new DAOJoueurHibernate(em);
+		IDAOParticipation daoParticipation = new DAOParticipationHibernate(em);
+
+		
+		//Creation d'un paquet
+		Paquet paquet = new Paquet();
+		
+		//Cr�ation des joueurs et on les mets dans une liste de joueurs:
+		ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
+
+
+//		Joueur joueur1 = new Joueur();
+//		daoJoueur.inscrireJoueur("DROUIN","Alexis","dindonneau", 24, "dindonneau", "dindonneau","dindonneau@wanadoo.org");
+//		Joueur joueur2 = new Joueur();
+//		daoJoueur.inscrireJoueur("CHEA","Sylvain","poussin", 30, "poussin", "poussin", "poussin@wanadoo.org" );
+//		Joueur joueur3 = new Joueur();
+//		daoJoueur.inscrireJoueur("YU", "Helene", "lapereau", 25, "lapereau", "lapereau","lapereau@wanadoo.org");
+//		Joueur joueur4 = new Joueur();
+//		daoJoueur.inscrireJoueur("DURAND", "Marie", "gerbillou", 26, "gerbillou", "gerbillou","gerbillou@wanadoo.org");
+//		Joueur joueur5 = new Joueur();
+//		daoJoueur.inscrireJoueur("CLOTILDE", "Karen", "brocard", 26, "brocard", "brocard", "brocard@wanadoo.org");
+//		Joueur joueur6 = new Joueur();
+//		daoJoueur.inscrireJoueur("PAGNON", "Gr�goire", "dromelon", 28, "dromelon", "dromelon", "dromelon@wanadoo.org");
+//		Joueur joueur7 = new Joueur();
+//		daoJoueur.inscrireJoueur("CORRE", "Benjamin", "autruchon", 29, "autruchon", "autruchon", "autruchon@wanadoo.org");
+//		Joueur joueur8 = new Joueur();
+//		daoJoueur.inscrireJoueur("TEK", "Emmanuelle", "anon", 29, "anon", "anon", "anon@wanadoo.org");
+//		Joueur joueur9 = new Joueur();
+//		daoJoueur.inscrireJoueur("PERROUAULT", "Jérémy", "carpillon", 12 ,"carpillon", "carpillon", "carpillon@wanadoo.org");
+//		Joueur joueur10 = new Joueur();
+//		daoJoueur.inscrireJoueur("ROYAL", "Constance", "loutron", 24, "loutron", "loutron", "loutron@wanadoo.org");
+//		
+		//Cr�ation cartes phrases:
+		CartePhrase cp1 = new CartePhrase("Bonjour je m'appelle _ ",1);
+		CartePhrase cp2 = new CartePhrase("Ce qui distingue l'homme de l'animal � mon sens c'est _ ",1);
+		CartePhrase cp3 = new CartePhrase(" _ c'est bien, _ c'est mieux ",3);
+		CartePhrase cp4 = new CartePhrase("Chez nous, _ se transmet de père en fils depuis des générations",1);
+		//Cr�ation de cartes mots:
+		CarteMotDefini cm1 = new CarteMotDefini("Mon 7e CDD");
+		CarteMotDefini cm2 = new CarteMotDefini("Rater l'apéro");
+		CarteMotDefini cm3 = new CarteMotDefini("Faire le café et les reliures");
+		CarteMotDefini cm4 = new CarteMotDefini("Marcher pieds nu sur un légo");
+		CarteMotDefini cm5 = new CarteMotDefini("Les énarques");
+		CarteMotDefini cm6 = new CarteMotDefini("Croire au père nöel");
+		CarteMotDefini cm7 = new CarteMotDefini("Le droit de cuissage");
+		CarteMotDefini cm8 = new CarteMotDefini("Le voir machouiller un légo");
+		CarteMotDefini cm9 = new CarteMotDefini("Une blague bien mysogine comme on les aime");
+		CarteMotDefini cm10 = new CarteMotDefini("Une bouteille de pastis et un Justin Bridou à partager");
+		paquet.ajouterCarteAuPaquet(cp1,cp2, cp3, cp4, cm1, cm2, cm3, cm4, cm5, cm6, cm7, cm8, cm9, cm10);
+		/*
+		 * ajouterCarteAuPaquet(paquet, cartePhrase, carteMot);
+		 * listerCartesDuPaquet(paquet);
+		 */
+
+		
+	
+		
+	int menu;
+	Scanner sc = new Scanner(System.in);
+	
+	do {
+	menu();
+	menu = sc.nextInt();
+		switch (menu) {
+		            case 1:
+		        		Joueur joueur = new Joueur();
+		        		daoJoueur.inscrireJoueur();
+		                break;
+		            case 2:
+		                daoJoueur.connection();
+		                break;
+		            case 3:
+		            	listerJoueurs();
+		                break;
+		            case 4:
+		                paquet.creerCarte();
+		                break;
+		            case 5:
+		                //modifierCarte();
+		                break;
+		            case 6:
+		                //supprimerCarte();
+		                break;
+		            case 7:
+		            	IDAOCarteMotDefini daoCarteMot = new DAOCarteMotDefiniHibernate(em);
+		        		System.out.println("\n Voici la liste des cartes mots \n");
+		        		for (CarteMotDefini c : daoCarteMot.findAll()) {
+		        			System.out.println(" La carte d'id numéro "+c.getId()+" contient le mot : "+c.getMot());
+		        		}
+		        		System.out.println("--------------------------------------------------------------------------------------------------");
+		        		IDAOCartePhrase daoCartePhrase = new DAOCartePhraseHibernate(em);
+		        		System.out.println("\n Voici la liste des cartes phrases \n ");
+		        		for (CartePhrase c: daoCartePhrase.findAll()) {
+		        			System.out.println("La carte d'id numéro : "+c.getId()+" contient la phrase "+c.getPhrase()+" qui rapporte "+c.getPoints());
+		        		}
+		        		break;
+		            case 8:
+		            	menu = 0;
+		                
+		                Scanner scan = new Scanner(System.in);
+		            
+
+		            int choix;
+		            
+		            do {
+		                System.out.println("Voici les joueurs inscrits, qui participe ? (tapez 0 une fois que vous avez sélectionné les participants) \n Vous pouvez jouer seul mais c'est un peu triste...");
+		                listerJoueurs();
+		                choix = scan.nextInt();
+		                if (choix > 0) {
+		                	Joueur joueurAAjouter = daoJoueur.findById(choix);
+		                	//Crée une participation pour la partie et le joueur sélectionné
+		                	creerParticipation(joueurAAjouter, p, daoParticipation);
+		                	//On ajoute le joueur dans la liste de joueur de la partie (supprimer ça ?)
+		                    nouvellepartie.ajouterJoueurs(joueurAAjouter);
+		                }
+		            } while(choix != 0);
+
+		            System.out.println("C'est parti voici vos cartes: ");
+		            nouvellepartie.distribuer(5);
+
+		            Tour tour = new Tour();
+		            tour.demandeDeJouer();
+		            
+		            	break;
+		            	
+		            case 0:
+		            	sc.close();
+		            	break;
+		}
+	} while (menu != 0);
+			
+	}
+	
+	public static void ajouterJoueurs(ArrayList<Joueur> listeJoueurs, Joueur... c) {
+		listeJoueurs.addAll(Arrays.asList(c));
+	}
+	
+	public static void listerJoueurs(ArrayList<Joueur> listeJoueurs) { 
+		for (Joueur j: listeJoueurs) {
+				System.out.println("Joueur - son pseudo est"+j.getPseudo() + 
+						" il a "+j.getAge()+" ans et "+j.getScore() +" points");
+			}
+			
+		}
+	
+	
+	
+
+	
+    
+    
+    
+    public static void menu() {
+    	
+                    System.out.println("-------------------------------");
+                    System.out.println("\r");
+                    System.out.println("   Les options sont : ");
+                    System.out.println("\r");
+                    System.out.println("1- Inscription");
+                    System.out.println("\r");
+                    System.out.println("2- Connexion");
+                    System.out.println("\r");
+                    System.out.println( "3- Liste des joueurs");
+                    System.out.println("\r");
+                    System.out.println( "4- Ajouter une carte");
+                    System.out.println("\r");
+                    System.out.println("5- Modifier une carte");
+                    System.out.println("\r");
+                    System.out.println("6- Supprimer une carte");
+                    System.out.println("\r");
+                    System.out.println("7- Lister les cartes");
+                    System.out.println("\r");
+                    System.out.println("8 - Lancer une partie ");
+                    System.out.println("\r");
+                    System.out.println("0- Quitter");
+                    System.out.println("\r");
+                    System.out.println("-------------------------------");
+                    System.out.println("Saisissez le numéro d'une option:");
+                    
+                }
+    
+    public static void listerJoueurs() {
+    	IDAOJoueur daoJoueur = new DAOJoueurHibernate(em);
+		//Liste des joueurs:
+		System.out.println("Voici la liste des joueurs: \n");
+		for (Joueur j : daoJoueur.findAll()) {
+			System.out.println("Joueur ID numéro: "+j.getId()+
+					" - Il s'appelle "+j.getPrenom()+" "+j.getNom()+
+					" et son pseudo est: "+j.getPseudo());
+		}
+    }
+    
+    //Créée une participation pour un joueur et l'enregistre
+    public static void creerParticipation(Joueur j, Partie p,IDAOParticipation daoParticipation) {
+    	Participation participation = new Participation(j,p);
+    	daoParticipation.save(participation);
+    }
+    
+    public static void creerParticipationAvecEquipes(Joueur j, Partie p, Equipe e) {
+    	
+    }
+         
+    //Création d'un paquet:
+    public static void creationPaquet() {
+		IDAOCartePhrase daoCartePhrase = new DAOCartePhraseHibernate(em);
+		IDAOCarteMotDefini daoCarteMotDefini = new DAOCarteMotDefiniHibernate(em);
+		
+		
+    }
+    //Crée une partie.
+    public static void creerPartie(Paquet paquet) {
+    	Partie nouvellepartie = new Partie();
+        nouvellepartie.ajouterPaquet(paquet);
+        nouvellepartie.melangerPaquets();
+    }
+}
+

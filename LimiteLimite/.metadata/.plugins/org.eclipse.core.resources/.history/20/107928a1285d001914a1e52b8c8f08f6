@@ -1,0 +1,183 @@
+package fr.formation.jeu;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
+
+import fr.formation.cartes.Paquet;
+import fr.formation.joueur.Joueur;
+
+@Entity
+@Table(name="partie")
+
+public class Partie {
+    
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="PAR_ID", nullable=false, unique=true)
+	@NotEmpty
+	@NotNull
+	private int id;
+	
+	@Column (name="PAR_MODE")
+	@NotEmpty
+	@NotNull
+	private String mode;
+	
+	
+	@Column (name="PAR_TYPE")
+	@NotEmpty
+	@NotNull
+	private String type;
+	
+
+	@Column(name="PAR_NB_JOUEUR")
+	@NotEmpty
+	@NotNull
+	protected int nombreJoueur;
+	
+	@Column(name="PAR_NB_TOUR")
+	@NotEmpty
+	@NotNull
+    private int nombreToursJoues;
+    
+	@OneToMany (mappedBy="partie")
+	private List<Participation> participation;
+	
+	@Transient
+    protected List<Joueur> joueursDansLaPartie = new ArrayList<Joueur>();
+    
+	@Transient
+    protected Paquet paquet;
+    
+    
+    public Partie() {
+    	
+    }
+
+    public Partie(Paquet p, Joueur... j) {
+        this.paquet = p;
+        this.joueursDansLaPartie.addAll(Arrays.asList(j));
+        this.nombreJoueur = this.joueursDansLaPartie.size();
+        
+        //Melange des cartes
+        Collections.shuffle(this.paquet.getPaquetCartesMots());
+        Collections.shuffle(this.paquet.getPaquetCartesPhrases());
+
+        //Distribuer trois cartes à tous les joueurs dans la partie: 
+        this.distribuer(3);
+        
+        System.out.println("La partie est bien lancée, il y a "+this.nombreJoueur+" joueurs : \n");
+        for (Joueur jou: joueursDansLaPartie) {
+			System.out.println(jou.getPseudo()+"\n");
+		}
+
+       
+    }
+   
+
+	//Si la partie n'a pas commencé, possible de rajouter des joueurs dans une partie créée
+    //Le recalcul du nombre de joueur se fait alors
+    public void ajouterJoueurs(Joueur... j) {
+    	if (nombreToursJoues>0) {
+			System.out.println("Personne ne rejoins une partie commencée !");
+			return;
+		}
+    	else {
+    	       this.joueursDansLaPartie.addAll(Arrays.asList(j));
+    	       this.nombreJoueur = this.joueursDansLaPartie.size();
+		}
+
+    }
+
+    public void distribuer(int combienDeCartesDistribuer) {
+        for(Joueur j : this.joueursDansLaPartie) {
+        	for (int i = 0; i < combienDeCartesDistribuer; i++) {
+        		//Ajoute une carte dans la main du joueur
+        		j.getMain().add(this.paquet.getPaquetCartesMots().get(0));
+        		//Enlève cette carte du paquet
+                this.paquet.getPaquetCartesMots().remove(0);
+			}
+        }
+
+    }
+
+    public void ajouterPaquet(Paquet p) {
+        this.paquet = p;
+    }
+
+    public void melangerPaquets() {
+        Collections.shuffle(this.paquet.getPaquetCartesMots());
+        Collections.shuffle(this.paquet.getPaquetCartesPhrases());
+    }
+
+    
+    
+    public Paquet getPaquet() {
+		return paquet;
+	}
+
+	public void setPaquet(Paquet paquet) {
+		this.paquet = paquet;
+	}
+
+	public int getNombreToursJoues() {
+		return nombreToursJoues;
+	}
+
+	public void setNombreToursJoues(int nombreToursJoues) {
+		this.nombreToursJoues = nombreToursJoues;
+	}
+
+	public int getNombreJoueur() {
+        return this.nombreJoueur;
+    }
+
+    public void setNombreJoueur(int nombreJoueur) {
+        this.nombreJoueur = nombreJoueur;
+    }
+
+    public List<Joueur> getJoueursDansLaPartie() {
+        return this.joueursDansLaPartie;
+    }
+
+    public void setJoueursDansLaPartie(List<Joueur> joueursDansLaPartie) {
+        this.joueursDansLaPartie = joueursDansLaPartie;
+    }
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+}

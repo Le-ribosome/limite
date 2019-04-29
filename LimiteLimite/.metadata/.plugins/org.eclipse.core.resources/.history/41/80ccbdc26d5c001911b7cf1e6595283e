@@ -1,0 +1,7 @@
+package fr.formation.dao;
+
+import fr.formation.joueur.Joueur;
+
+public interface IDAOJoueur extends IDAO<Joueur> {
+	public Joueur findJoueurByPseudo(String pseudo);
+}

@@ -1,0 +1,45 @@
+package fr.formation.cartes;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CarteATrou")
+@AttributeOverrides({
+@AttributeOverride(name="id", column=@Column(name="CLI_ID")),
+@AttributeOverride(name="nom", column=@Column(name="CLI_NOM", nullable = false)),
+@AttributeOverride(name="adresse", column=@Column(name="CLI_ADRESSE")),
+@AttributeOverride(name="telephone", column=@Column(name="CLI_NUMERO_TELEPHONE")),
+
+})
+public class CarteATrou extends Carte {
+	
+	
+	private int temps;
+	
+	
+	
+	public CarteATrou() {
+		this.setTemps(30);
+	}
+
+
+
+	public int getTemps() {
+		return temps;
+	}
+
+
+
+	public void setTemps(int temps) {
+		this.temps = temps;
+	}
+
+	
+	
+	
+	
+}

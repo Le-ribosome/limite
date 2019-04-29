@@ -1,0 +1,95 @@
+package fr.formation.cartes.copy;
+
+public class CartePhrase extends CarteATrou {
+
+	private String phrase;
+	private int temps;
+	private int points;
+	private int nbtrou;
+	private int id;
+	
+	
+	
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getTemps() {
+		return temps;
+	}
+
+	public void setTemps(int temps) {
+		this.temps = temps;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+
+
+	public int getNbtrou() {
+		return nbtrou;
+	}
+
+
+
+	public void setNbtrou(int nbtrou) {
+		this.nbtrou = nbtrou;
+	}
+
+	public CartePhrase() {
+	}
+	
+
+	public CartePhrase(String phrase, int points) {
+		int count = 0;
+		for (int i = 0; i < phrase.length(); i++) {
+			if (phrase.charAt(i) == '_'){
+				count++;
+			}
+		}
+		this.nbtrou=count;
+		this.phrase=phrase;
+		this.points=points;
+	}
+	
+	
+
+	public String getPhrase() {
+		return phrase;
+	}
+
+	public void setPhrase(String phrase) {
+		this.phrase = phrase;
+	}
+
+	public int getNbTrous() {
+		return nbtrou;
+	}
+
+	public void setNbTrous(int nbTrous) {
+		this.nbtrou = nbTrous;
+	}
+
+	public int getPointsGagnes() {
+		return points;
+	}
+
+	public void setPointsGagnes(int pointsGagnes) {
+		this.points = pointsGagnes;
+	}
+
+
+	
+}

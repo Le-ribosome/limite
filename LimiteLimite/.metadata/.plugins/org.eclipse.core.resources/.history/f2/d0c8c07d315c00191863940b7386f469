@@ -1,0 +1,38 @@
+package fr.formation.cartes;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
+
+@MappedSuperclass
+public class CarteATrou extends Carte {
+	
+	
+	private int temps;
+	
+	
+	
+	public CarteATrou() {
+		this.setTemps(30);
+	}
+
+
+
+	public int getTemps() {
+		return temps;
+	}
+
+
+
+	public void setTemps(int temps) {
+		this.temps = temps;
+	}
+
+	
+	
+	
+	
+}

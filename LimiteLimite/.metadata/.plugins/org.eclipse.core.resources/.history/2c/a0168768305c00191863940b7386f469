@@ -1,0 +1,20 @@
+package fr.formation.cartes;
+
+public class CarteMot extends Carte {
+
+	
+	protected String mot;
+	
+	
+	public CarteMot() {
+		
+	}
+	
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+}

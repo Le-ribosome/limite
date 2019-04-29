@@ -1,0 +1,56 @@
+package fr.formation.cartes.copy;
+import java.util.ArrayList;
+
+
+public class Carte {
+	
+	private String sabot;
+	private static int gestionid = 1;
+	private int id;
+	private ArrayList<Carte> listeCartes = new ArrayList<Carte>();
+	
+	
+	public Carte() {
+		this.id = gestionid++;
+		listeCartes.add(this);
+	}
+	
+
+
+	public ArrayList<Carte> getListeCartes() {
+		return listeCartes;
+	}
+
+
+
+	public void setListeCartes(ArrayList<Carte> listeCartes) {
+		this.listeCartes = listeCartes;
+	}
+
+
+
+	public String getSabot() {
+		return sabot;
+	}
+
+
+
+	public void setSabot(String sabot) {
+		this.sabot = sabot;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+	
+}
+
+

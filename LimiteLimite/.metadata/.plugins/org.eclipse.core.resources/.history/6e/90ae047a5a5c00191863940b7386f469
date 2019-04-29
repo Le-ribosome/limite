@@ -1,0 +1,332 @@
+package fr.formation.joueur;
+import java.security.Key;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
+
+import fr.formation.cartes.CarteMotDefini;
+import fr.formation.jeu.Participation;
+
+
+
+@Entity
+@Table(name="joueur")
+@AttributeOverrides({ 
+	@AttributeOverride(name="id", column=@Column(name="JOU_ID")),
+	@AttributeOverride(name="nom", column=@Column(name="JOU_NOM")),
+	@AttributeOverride(name="prenom", column=@Column(name="JOU_PRENOM")),
+	@AttributeOverride(name="pseudo", column=@Column(name="JOU_PSEUDO")),
+	@AttributeOverride(name="password", column=@Column(name="JOU_PASSWORD")),
+	@AttributeOverride(name="mail", column=@Column(name="JOU_MAIL")),
+	@AttributeOverride(name="age", column=@Column(name="JOU_AGE"))
+})
+
+
+
+public class Joueur extends Utilisateur {
+	// int id definit dans utilisateur
+	/*
+	 * string nom, prenom, pseudo, password , mail et age egalement
+	 * propre au joueur : équipe, score, main, cartes jouées d'un tour
+	 */
+
+
+   
+
+   @Column (name="JOU_SCORE")
+   @NotNull
+   @NotEmpty
+   private int score;
+    
+    
+  // Attention la main est reliée à participation, là pas relié à la bdd
+    @Transient
+    private List<CarteMotDefini> main = new ArrayList<CarteMotDefini>(); // ajoute une collection priv�e : la main du joueur
+  
+    @Transient
+    private List<CarteMotDefini> jouerCarte = new ArrayList<CarteMotDefini>();
+    
+    @OneToMany (mappedBy="joueur")
+    private List<Participation> participation;
+    
+    public List<CarteMotDefini> getJouerCarte() {
+		return jouerCarte;
+	}
+	public void setJouerCarte(List<CarteMotDefini> jouerCarte) {
+		this.jouerCarte = jouerCarte;
+	}
+	public Joueur(String pseudo, int age) {
+        this.pseudo = pseudo;
+        this.age = age;
+        this.score = 0;
+            }
+    public Joueur() {
+    	
+    }
+    
+//    public static void connection() {
+//    	IDAOJoueur daoJoueur = new DAOJoueurSQL();
+//    	Scanner sc = new Scanner(System.in);
+//    	String pseudo;
+//    	String password;
+//    	//demande pseudo
+//    	System.out.println("Entrez votre pseudo: ");
+//    	pseudo = sc.nextLine();
+//    	//verifie que le pseudo est dans la DB
+//    	daoJoueur.findJoueurByPseudo(pseudo);
+//    	//demande le mdp
+//    	System.out.println("Entrez votre mot de passe: ");
+//    	//verifie si mdp entr� correct
+//    	
+//    	//passe le boolean connected a vrai ==> possible de lancer une partie avec ce joueur
+//    }
+    
+//	public void inscrireJoueur() {
+//		String nom="";
+//		String prenom="";
+//		String pseudo="";
+//		int age=0;
+//		String password="";
+//		String passwordVerif="";
+//		IDAOJoueur daoJoueur = new DAOJoueurSQL();
+//		boolean retaper=false;
+//		Scanner sc = new Scanner(System.in);
+//		
+//				do {
+//					if (retaper) {
+//						System.out.println("Entrez un nom correct !!! ");
+//					}
+//					System.out.println("Nom: \n");
+//					nom = sc.nextLine();
+//					if (verifNomPrenom(nom)){
+//						retaper=false; 
+//					}
+//					else {
+//						retaper=true;
+//					}
+//				} while(retaper);
+//				
+//				do {
+//					if (retaper) {
+//						System.out.println("Entrez un pr�nom correct !!! ");
+//					}
+//					System.out.println("Pr�nom: \n");
+//					prenom = sc.nextLine();
+//					if (verifNomPrenom(prenom)){
+//						retaper=false; 
+//					}
+//					else {
+//						retaper=true;
+//					}
+//				} while(retaper);
+//				
+//				
+//				do {
+//					try {
+//						if (retaper) {
+//							System.out.println("Entrez un age correct !!!");
+//							sc.next();
+//						}
+//						System.out.println("Age: \n");
+//						age = sc.nextInt();
+//						retaper=false;
+//					} catch (Exception e) {
+//						retaper=true;
+//					}
+//				} while (retaper);
+//				
+//				do {
+//					try {
+//						System.out.println("Pseudo: \n");
+//						pseudo = sc.next();
+//						if (daoJoueur.findByPseudo(pseudo)) {
+//							throw new PseudoDejaPrisException();	
+//						}
+//						retaper = false;
+//					} catch (PseudoDejaPrisException e) {
+//						System.out.println("Pseudo d�ja pris ! \n Choisissez autre chose:");
+//						retaper=true;
+//					}
+//				} while (retaper);
+//				
+//				
+//				do {
+//					if (retaper) {
+//						System.out.println("Erreur dans le mot de passe");
+//					}
+//					System.out.println("Password de 6 caract�res mini : \n");
+//					password = sc.next();
+//					System.out.println("V�rifier le mot de passe: \n");
+//					passwordVerif = sc.next();
+//					retaper = true;
+//					System.out.println(password);
+//					System.out.println(passwordVerif);
+//				} while ((!password.equals(passwordVerif)) || (password.length()<6));
+//				
+//		
+//		
+//		this.nom=nom;
+//		this.prenom=prenom;
+//		this.age=age;
+//		this.pseudo=pseudo;
+//		//Cryptage mdp avant envoi en DB: 
+//		password = encrypt(password, "soprasteria");
+//		this.password=password;
+//		
+//		//Verification: 
+//		System.out.println("Joueur cr��e \n"
+//				+ "Nom: "+this.nom+
+//				"Pr�nom: "+this.prenom+
+//				"Age: "+this.age+
+//				"Pseudo: "+this.pseudo+
+//				"Mot de passe: :" +this.password);
+//		//Envoi en DB: 
+//		
+//		daoJoueur.save(this);
+//		System.out.println("Joueur inscit ,BRAVO !");
+//	}
+//	
+//	
+//	public void inscrireJoueur(String nom, String prenom, String pseudo, int age, String password, String passwordVerif) {
+//		
+//		IDAOJoueur daoJoueur = new DAOJoueurSQL();
+//
+//					try {
+//						if (daoJoueur.findByPseudo(pseudo)) {
+//							throw new PseudoDejaPrisException();	
+//						}
+//						
+//					} catch (PseudoDejaPrisException e) {
+//						System.out.println("Pseudo d�ja pris ! \n Choisissez autre chose:");
+//					}
+//		
+//		
+//		this.nom=nom;
+//		this.prenom=prenom;
+//		this.age=age;
+//		this.pseudo=pseudo;
+//		//Cryptage mdp avant envoi en DB: 
+//		password = encrypt(password, "soprasteria");
+//		this.password=password;
+//		
+//		//Verification: 
+//		System.out.println("Joueur cr��e \n"
+//				+ "Nom: "+this.nom+
+//				"Pr�nom: "+this.prenom+
+//				"Age: "+this.age+
+//				"Pseudo: "+this.pseudo+
+//				"Mot de passe: :" +this.password);
+//		//Envoi en DB: 
+//		
+//		daoJoueur.save(this);
+//		System.out.println("Joueur inscit ,BRAVO ! \n");
+//	}
+	
+    
+	
+	public void regarderSaMain() {
+        int i = 1;
+
+        for(CarteMotDefini c : this.main) {
+            System.out.println(i + " - " + c.getMot());
+        }
+
+    }
+	
+	//Cette methode fait mettre une ou plusieurs cartes mots dans l'arraylist
+	//jouerCarte eet correspond aux cartes que le joueur choisi de jouer à un tour.
+	public void jouer(int nbMots) {
+        Scanner sc = new Scanner(System.in);
+
+        for(int j = 0; j < nbMots; ++j) {
+            int choix;
+            do {
+                System.out.println("Entre ton choix pour le trou " + (j + 1) + "et appuie sur la touche entrée ");
+                choix = sc.nextInt();
+            } while(choix < 0 || choix > this.main.size());
+
+            --choix;
+            this.jouerCarte.add(this.main.get(choix));
+            this.main.remove(choix);
+        }
+
+    }
+	
+  
+
+	
+
+	public void setMain(List<CarteMotDefini> main) {
+		this.main = main;
+	}
+
+	public List<CarteMotDefini> getMain() {
+        return main;
+    }
+
+    public Equipe getEquipe() {
+        return equipe;
+    }
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
+    }
+    public int getScore() {
+        return score;
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
+    public String encrypt(String password,String key){
+		try
+		{
+		Key clef = new SecretKeySpec(key.getBytes("ISO-8859-2"),"Blowfish");
+		Cipher cipher=Cipher.getInstance("Blowfish");
+		cipher.init(Cipher.ENCRYPT_MODE,clef);
+		return new String(cipher.doFinal(password.getBytes()));
+		}
+		catch (Exception e)
+		{
+		return null;
+		}
+	}
+	
+	public String decrypt(String password,String key){
+		try
+		{
+		Key clef = new SecretKeySpec(key.getBytes("ISO-8859-2"),"Blowfish");
+		Cipher cipher=Cipher.getInstance("Blowfish");
+		cipher.init(Cipher.DECRYPT_MODE,clef);
+		return new String(cipher.doFinal(password.getBytes()));
+		}
+		catch (Exception e)
+		{
+		System.out.println(e);
+		return null;
+		}
+	
+	}
+	
+	//Prend un string et retourne vrai si plus de 0 char et A-Z a-z - ��
+	public boolean verifNomPrenom(String nomPrenom) {
+		if (!nomPrenom.isEmpty() && nomPrenom.matches("^[a-zA-Z������������]+([\\-\\' ][a-zA-Z������������]+)*$")) {
+			return true;
+		}
+		else
+			return false;
+	}
+	
+  }
