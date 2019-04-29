@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Cute Font', cursive;
+  box-sizing: border-box;
+}
+
+.row{
+  margin: 0 !important;
+  width: 100%;
+}
+
+.container{
+  width: 50%;
+}
+
+.col-3{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body{
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+
+background-image:  url("https://image.freepik.com/vecteurs-libre/illustration-aquarelle-paysage-foret-epinette-brumeuse-bleue_3470-17.jpg");
+    background-size: cover;
+    background-position : center;
+}
+
+header{
+  font-weight: bold;
+  border: 1px solid #1C2833;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(171, 178, 185,0.85);
+}
+
+h2{
+  font-size: 4vw;
+  text-align: center;
+  margin: 0 !important;
+  display: block;
+}
+
+.imgMouton{
+
+}
+
+
+
+.formulaire{
+  border: 1px solid #1C2833;
+  border-radius: 5px;
+  background-color: rgba(171, 178, 185,0.85);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:5px;
+}
+
+
+.input{
+  width: 100%;
+  height: 40px;
+  box-shadow: 2px 2px 2px #34495E;
+  text-align: center;
+
+}
+
+.ok input{
+  width:40%;
+  background-color: #09313387;
+  border-radius: 15px;
+  color: whitesmoke;
+  padding: 0 !important;
+}
+
+.mt-2.mb-2.input.col-10{
+  font-size: 3vh;
+}
+
+#remember{
+  width: 50%;
+}
+
+button{
+  background-color:#556e7282;
+  text-align:center;
+  border:2px solid;
+  /*pour avoir un effet "outset" avec IE :*/
+  border-color:#DCDCDC #696969 #696969 #DCDCDC;
+}
+
+button a {
+  font-weight: bold;
+  line-height: 150%;
+  display: block;
+  height: 100%;
+  width:100%;
+  text-decoration:none;
+  color:black;
+ }
+ button a:hover {
+   text-decoration: none;
+   color:black;
+  }
+ /* button:hover {
+ background-color:#D3D3D3;
+ border-color:#696969 #DCDCDC #DCDCDC #696969;
+ } */
+
+ul :nth-child(2) > a{
+  line-height: 20px;
+}
+
+#pluieDeChat img{
+  height: 100px;
+  width:100px;
+  position: absolute;
+}
+
+#chat1{
+  top: -1000px;
+  position: relative;
+  left: 300px;
+}
+#chat2{
+  top: -1000px;
+  position: absolute;
+  left: 300px;
+}
+#chat3{
+  top: -1000px;
+  position: absolute;
+  left: 600px;
+}
+#chat4{
+  top: -1000px;
+  position: absolute;
+  left: 900px;
+}
+
+#erreur{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  font-size: 2em;
+  background-color:RGB(240, 128, 128);
+  border-radius: 15px;
+  display: none;
+  text-align: center;
+  justify-content: space-around;
+  flex-flow: column;
+
+}
+
+.fs-3vh-r{
+  font-size: 3vh;
+}
+.fs-3vh-r-valider{
+  font-size: 3vh;
+}
+
+@media (min-width: 1300px) {
+  .fs-3vh-r{
+    font-size: 3.5vh;
+  }
+  .fs-3vh-r-valider{
+    font-size: 4vh;
+  }
+}
+
+@media (max-width: 690px) {
+  .fs-3vh-r{
+    font-size: 2.5vh;
+  }
+  .fs-3vh-r-valider{
+    font-size: 3vh;
+  }
+}
+@media (max-width: 595px) {
+  .fs-3vh-r{
+    font-size: 1.5vh;
+  }
+  .fs-3vh-r-valider{
+    font-size: 3vh;
+  }
+  ul :nth-child(3) > a{
+    line-height: 10px;
+  }
+}
+
+@media (max-width: 445px) {
+
+  .fs-3vh-r-valider{
+    font-size: 2.5vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .fs-3vh-r{
+    font-size: 1vh;
+  }
+  .fs-3vh-r-valider{
+    font-size: 2vh;
+  }
+}
+@media (max-width: 380px) {
+  .fs-3vh-r{
+    font-size: 1vh;
+  }
+  .fs-3vh-r-valider{
+    font-size: 1vh;
+  }
+}
