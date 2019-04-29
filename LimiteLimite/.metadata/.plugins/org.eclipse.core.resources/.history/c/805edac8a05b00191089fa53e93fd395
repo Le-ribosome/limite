@@ -1,9 +1,0 @@
-package fr.formation.cartes.copy;
-
-public class CartePhoto extends CarteATrou {
-
-	
-	public CartePhoto(){
-		this.setCategorie("photo");
-	}
-}
