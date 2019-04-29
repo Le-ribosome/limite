@@ -23,6 +23,7 @@ import fr.formation.joueur.Joueur;
 
 public class Application {
 
+	//COUCOU
 	
 	@Autowired
 	private IDAOCartePhrase daoCartePhrase;
