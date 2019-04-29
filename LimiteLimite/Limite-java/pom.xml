@@ -6,13 +6,12 @@
   <version>0.0.1-SNAPSHOT</version>
  
  <dependencies>
- 
- <dependency>
+
+  <dependency>
   <groupId>fr.formation</groupId>
-  <artifactId>Limite-jpa</artifactId>
+  <artifactId>Limite-data-jpa</artifactId>
   <version>0.0.1-SNAPSHOT</version> 
  </dependency>
- 
  
  </dependencies>
  

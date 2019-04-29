@@ -1,12 +1,11 @@
-package fr.formation.Limite_java;
+package formation.Limite_java;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Scanner;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.formation.cartes.CarteMotDefini;
 import fr.formation.cartes.CartePhrase;
@@ -16,11 +15,6 @@ import fr.formation.dao.IDAOCartePhrase;
 import fr.formation.dao.IDAOJoueur;
 import fr.formation.dao.IDAOParticipation;
 import fr.formation.dao.IDAOPartie;
-import fr.formation.dao.hibernate.DAOCarteMotDefiniHibernate;
-import fr.formation.dao.hibernate.DAOCartePhraseHibernate;
-import fr.formation.dao.hibernate.DAOJoueurHibernate;
-import fr.formation.dao.hibernate.DAOParticipationHibernate;
-import fr.formation.dao.hibernate.DAOPartieHibernate;
 import fr.formation.jeu.Participation;
 import fr.formation.jeu.Partie;
 import fr.formation.jeu.Tour;
@@ -29,17 +23,26 @@ import fr.formation.joueur.Joueur;
 
 public class Application {
 
-	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("NomPersistenceUnit"); 
-	static EntityManager em = emf.createEntityManager();
+	
+	@Autowired
+	private IDAOCartePhrase daoCartePhrase;
+	@Autowired
+	private IDAOParticipation daoParticipation;
+	@Autowired
+	private IDAOJoueur daoJoueur;
+	@Autowired
+	private IDAOPartie daoPartie;
+	@Autowired
+	private IDAOCarteMotDefini daoCarteMotDefini;
 	
 	@SuppressWarnings("unused")
-	public static void main(String[] args) {
+	public void run(String[] args) {
 		
-		IDAOJoueur daoJoueur = new DAOJoueurHibernate(em);
-		IDAOParticipation daoParticipation = new DAOParticipationHibernate(em);
-		IDAOPartie daoPartie = new DAOPartieHibernate(em);
-		IDAOCartePhrase daoCartePhrase = new DAOCartePhraseHibernate(em);
-    	IDAOCarteMotDefini daoCarteMotDefini = new DAOCarteMotDefiniHibernate(em);
+//		IDAOJoueur daoJoueur = new DAOJoueurHibernate(em);
+//		IDAOParticipation daoParticipation = new DAOParticipationHibernate(em);
+//		IDAOPartie daoPartie = new DAOPartieHibernate(em);
+//		IDAOCartePhrase daoCartePhrase = new DAOCartePhraseHibernate(em);
+//    	IDAOCarteMotDefini daoCarteMotDefini = new DAOCarteMotDefiniHibernate(em);
 		
     	
 		//Cr�ation des joueurs et on les mets dans une liste de joueurs:
@@ -101,10 +104,10 @@ public class Application {
 		switch (menu) {
 		            case 1:
 		        		Joueur joueur = new Joueur();
-		        		daoJoueur.inscrireJoueur();
+		        		//daoJoueur.inscrireJoueur();
 		                break;
 		            case 2:
-		                daoJoueur.connection();
+		                //daoJoueur.connection();
 		                break;
 		            case 3:
 		            	listerJoueurs();
@@ -121,10 +124,10 @@ public class Application {
 		        		try {
 		        	
 							if (choixcreer==1){
-								daoCartePhrase.creerCartePhrase();
+								//daoCartePhrase.creerCartePhrase();
 							}
 							else if (choixcreer ==2) {
-					            daoCarteMotDefini.creerCarteMotDefini();
+					           // daoCarteMotDefini.creerCarteMotDefini();
 							}
 						} catch (Exception e) {
 		        		System.out.println("Ce choix ne vous est pas proposé.");
@@ -140,9 +143,9 @@ public class Application {
 		                //supprimerCarte();
 		                break;
 		            case 7:
-		            	IDAOCarteMotDefini daoCarteMot = new DAOCarteMotDefiniHibernate(em);
+//		            	IDAOCarteMotDefini daoCarteMot = new DAOCarteMotDefiniHibernate(em);
 		        		System.out.println("\n Voici la liste des cartes mots \n");
-		        		for (CarteMotDefini c : daoCarteMot.findAll()) {
+		        		for (CarteMotDefini c : daoCarteMotDefini.findAll()) {
 		        			System.out.println(" La carte d'id numéro "+c.getId()+" contient le mot : "+c.getMot());
 		        		}
 		        		System.out.println("--------------------------------------------------------------------------------------------------");
@@ -163,13 +166,14 @@ public class Application {
 		                listerJoueurs();
 		                choix = scan.nextInt();
 		                if (choix > 0) {
-		                	Joueur joueurAAjouter = daoJoueur.findById(choix);
-		                	System.out.println(joueurAAjouter.getId() +" nom "+joueurAAjouter.getNom());
-		                	//Crée une participation pour la partie et le joueur sélectionné et l'enregistre dans la BDD
-		                	creerParticipation(joueurAAjouter, nouvellePartie, daoParticipation);
-		                	
-		                	//On ajoute le joueur dans la liste de joueur de la partie (supprimer ça ?)
-		                    nouvellePartie.ajouterJoueurs(joueurAAjouter);
+		                	Optional<Joueur> joueurAAjouter = daoJoueur.findById(choix);
+//		                	//CORRIER �A, ON A DES LISTES DEPUIS SPRING
+//		                	System.out.println(joueurAAjouter.getId() +" nom "+joueurAAjouter.getNom());
+//		                	//Crée une participation pour la partie et le joueur sélectionné et l'enregistre dans la BDD
+//		                	creerParticipation(joueurAAjouter, nouvellePartie, daoParticipation);
+//		                	
+//		                	//On ajoute le joueur dans la liste de joueur de la partie (supprimer ça ?)
+//		                    nouvellePartie.ajouterJoueurs(joueurAAjouter);
 		                }
 		            } while(choix != 0);
 
@@ -192,11 +196,11 @@ public class Application {
 			
 	}
 	
-	public static void ajouterJoueurs(ArrayList<Joueur> listeJoueurs, Joueur... c) {
+	public void ajouterJoueurs(ArrayList<Joueur> listeJoueurs, Joueur... c) {
 		listeJoueurs.addAll(Arrays.asList(c));
 	}
 	
-	public static void listerJoueurs(ArrayList<Joueur> listeJoueurs) { 
+	public void listerJoueurs(ArrayList<Joueur> listeJoueurs) { 
 		for (Joueur j: listeJoueurs) {
 				System.out.println("Joueur - son pseudo est"+j.getPseudo() + 
 						" il a "+j.getAge()+" ans et "+j.getScore() +" points");
@@ -211,7 +215,7 @@ public class Application {
     
     
     
-    public static void menu() {
+    public void menu() {
     	
                     System.out.println("-------------------------------");
                     System.out.println("\r");
@@ -240,8 +244,8 @@ public class Application {
                     
                 }
     
-    public static void listerJoueurs() {
-    	IDAOJoueur daoJoueur = new DAOJoueurHibernate(em);
+    public void listerJoueurs() {
+//    	IDAOJoueur daoJoueur = new DAOJoueurHibernate(em);
 		//Liste des joueurs:
 		System.out.println("Voici la liste des joueurs: \n");
 		for (Joueur j : daoJoueur.findAll()) {
@@ -252,20 +256,20 @@ public class Application {
     }
     
     //Créée une participation pour un joueur et l'enregistre
-    public static void creerParticipation(Joueur j, Partie p,IDAOParticipation daoParticipation) {
+    public void creerParticipation(Joueur j, Partie p,IDAOParticipation daoParticipation) {
     	Participation participation = new Participation(j,p);
     	daoParticipation.save(participation);
     }
     
-    public static void creerParticipationAvecEquipes(Joueur j, Partie p, Equipe e) {
+    public void creerParticipationAvecEquipes(Joueur j, Partie p, Equipe e) {
     	
     }
          
     //Construction d'un paquet avec toutes les cartes de la BD et attribution de ce paquet
     //a une partie.
-    public static Paquet creationPaquet() {
-		IDAOCartePhrase daoCartePhrase = new DAOCartePhraseHibernate(em);
-		IDAOCarteMotDefini daoCarteMotDefini = new DAOCarteMotDefiniHibernate(em);
+    public Paquet creationPaquet() {
+//		IDAOCartePhrase daoCartePhrase = new DAOCartePhraseHibernate(em);
+//		IDAOCarteMotDefini daoCarteMotDefini = new DAOCarteMotDefiniHibernate(em);
 		Paquet paquet = new Paquet();
 		paquet.setPaquetCartesPhrases(daoCartePhrase.findAll());
 		paquet.setPaquetCartesMotsDefinis(daoCarteMotDefini.findAll());
@@ -273,7 +277,7 @@ public class Application {
 		return paquet;
     }
     //Crée une partie.
-    public static Partie creerPartie() {
+    public Partie creerPartie() {
     	Partie nouvellepartie = new Partie();
     	Paquet paquet = creationPaquet();
         nouvellepartie.ajouterPaquet(paquet);
