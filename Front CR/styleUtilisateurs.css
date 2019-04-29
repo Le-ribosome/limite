@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #f1f1f1;
+    margin: 2rem;
+    background-color: #f5da40;
+    background-image: linear-gradient(to left top, #f5da40,#ffffff);
+     text-align: center;
+     background-image:  url("https://image.freepik.com/vecteurs-libre/illustration-aquarelle-paysage-foret-epinette-brumeuse-bleue_3470-17.jpg");
+     background-size: cover;
+     background-position : center;
+
+}
+header h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 4rem;
+}
+header h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+}
+
+.cartes-utilisateurs {
+    display: flex;
+ 
+    flex-direction: column;
+    margin: 1rem auto;
+    box-shadow: 0 3px 7px -1px rgba(#000, .1);
+    margin-bottom: 1.6%;
+    background: #fff;
+    line-height: 1.4;
+
+    border-radius: 15px;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.cartes-utilisateurs a {
+    color: inherit;
+}
+
+.cartes-utilisateurs:hover .photo {
+    -webkit-transform: scale(1.3) rotate(3deg) translate(+55px);
+    transform: scale(1.3) rotate(3deg) translate(+55px);
+}
+
+.utilisateur {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+}
+
+.photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: left;
+    transition: transform 1s;
+    height: 100%;
+    transform: translate(+55px);
+}
+
+.infos-surbrillance, .infos-surbrillance ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+   
+}
+
+.infos-surbrillance {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left .5s;
+    background: rgba(171, 178, 185, 0.6);
+    color: black;
+    padding: 10px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    margin-right: 10px;
+    content: "\f007";
+    
+}
+
+.cartes-utilisateurs .infos-surbrillance a {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+
+}
+
+.cartes-utilisateurs .infos-surbrillance .name, .email:before {
+    font-family: 'Roboto', sans-serif;
+    margin-right: 10px;
+   
+}
+
+.cartes-utilisateurs .username, .id {
+    padding: 1rem;
+    background:rgba(171, 178, 185,0.85);
+    position: relative;
+    z-index: 1;
+   
+   
+}
+
+.cartes-utilisateurs .username, .id p {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.cartes-utilisateurs:hover .infos-surbrillance {
+    left: 0%;
+}
+
+@media (min-width: 640px) {
+    .cartes-utilisateurs {
+        flex-direction: row;
+        max-width: 700px;
+    }
+    .cartes-utilisateurs .utilisateur {
+        flex-basis: 40%;
+        height: auto;
+    }
+    .cartes-utilisateurs .username, .id {
+        flex-basis: 60%;
+    }
+    .cartes-utilisateurs .username:before, .id:before {
+        -webkit-transform: skewX(-3deg);
+        transform: skewX(-3deg);
+        content: "";
+        background: #fff;
+        width: 30px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      
+    }
+    .cartes-utilisateurs.alt {
+        flex-direction: row-reverse;
+    }
+    .cartes-utilisateurs.alt .username:before, .id:before {
+        left: inherit;
+        right: -10px;
+        -webkit-transform: skew(3deg);
+        transform: skew(3deg);
+    }
+    .cartes-utilisateurs.alt .infos-surbrillance {
+        padding-left: 25px;
+    }
+}
