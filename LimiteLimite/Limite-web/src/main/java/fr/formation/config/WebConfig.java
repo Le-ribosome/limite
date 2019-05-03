@@ -5,20 +5,21 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
-@ComponentScan("fr.formation.controller")
+@ComponentScan("fr.formation")
 @EnableWebMvc
-public class WebConfig {
+public class WebConfig implements WebMvcConfigurer {
 	
 	//Pour gérer les fichiers ressources en tant que tel:
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("WEB-INF/css/**").addResourceLocations("/css/");
-		registry.addResourceHandler("WEB-INF/js/**").addResourceLocations("/js/");
-		registry.addResourceHandler("WEB-INF/images/**").addResourceLocations("/images/");
+		registry.addResourceHandler("/css/**").addResourceLocations("WEB-INF/css/");
+		registry.addResourceHandler("/js/**").addResourceLocations("WEB-INF/js/");
+		registry.addResourceHandler("/images/**").addResourceLocations("WEB-INF/images/");
 		}
 
 	
