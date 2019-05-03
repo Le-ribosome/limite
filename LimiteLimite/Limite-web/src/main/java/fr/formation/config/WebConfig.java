@@ -16,8 +16,9 @@ public class WebConfig {
 	
 	//Pour gérer les fichiers ressources en tant que tel:
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-		registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+		registry.addResourceHandler("WEB-INF/css/**").addResourceLocations("/css/");
+		registry.addResourceHandler("WEB-INF/js/**").addResourceLocations("/js/");
+		registry.addResourceHandler("WEB-INF/images/**").addResourceLocations("/images/");
 		}
 
 	
