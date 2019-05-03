@@ -1,7 +1,7 @@
 
   let mail = {
     "type": "mail",
-    "validation": false,
+    "validation": false,
     "idInput": "email",
     "idBouton": "bouton",
     "idEltRajout": "poupi",
@@ -14,7 +14,7 @@
 
   let username = {
     "type": "username",
-    "validation": false,
+    "validation": false,
     "idInput": "username",
     "idBouton": "bouton",
     "idEltRajout": "poupo",
@@ -28,7 +28,7 @@
 
   let mdp = {
     "type": "password",
-    "validation": false,
+    "validation": false,
     "idInput": "password1",
     "idInput2": "password2",
     "idBouton": "bouton",

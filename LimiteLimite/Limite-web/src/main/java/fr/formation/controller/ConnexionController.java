@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.formation.dao.IDAOJoueur;
 
-@Controller
+//@Controller
 public class ConnexionController {
 
 @Autowired
