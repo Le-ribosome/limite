@@ -17,15 +17,9 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	//Pour gérer les fichiers ressources en tant que tel:
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-<<<<<<< Updated upstream
-		registry.addResourceHandler("/css/**").addResourceLocations("WEB-INF/css/");
-		registry.addResourceHandler("/js/**").addResourceLocations("WEB-INF/js/");
-		registry.addResourceHandler("/images/**").addResourceLocations("WEB-INF/images/");
-=======
 		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
-		registry.addResourceHandler("WEB-INF/js/**").addResourceLocations("/js/");
-		registry.addResourceHandler("WEB-INF/images/**").addResourceLocations("/images/");
->>>>>>> Stashed changes
+		registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
+		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/images/");
 		}
 
 	

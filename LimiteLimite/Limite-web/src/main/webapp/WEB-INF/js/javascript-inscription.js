@@ -1,20 +1,3 @@
-//🖕
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   let mail = {
     "type": "mail",
@@ -82,17 +65,6 @@
 
     bouton.addEventListener("click", function(event) {
       event.preventDefault();
-
-
-    //   var rotation = function (){
-    //   $(".imgMouton").rotate({
-    //     angle:0,
-    //     animateTo:360,
-    //     callback: rotation
-    //   });
-    // }
-    //   rotation();
-
 
       if (obj.foo(input.value) == false) {
 
@@ -181,22 +153,3 @@ verif2(mail);
 verif2(username);
 verif2(mdp);
 
-
-
-// if (a==true && b==true && c==true) {
-//   console.console.log("oerheoherofijh");
-
-// }
-
-// //AJAX:
-// const ajax = new Ajax('https://jsonplaceholder.typicode.com/todos');
-// ajax.get(1).then(json => console.log(json));
-// let data = {
-//   title: "titre",
-//   body: "BlaBlaBla",
-//   userId: 12
-// };
-//
-// ajax.post(data).then(json => console.log(json));
-//
-// ajax.delete(1).then(json => console.log(json));
