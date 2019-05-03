@@ -2,14 +2,14 @@
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title>Login Limite Limite</title>
+    <title>Connexion Limite Limite</title>
     <link href="https://fonts.googleapis.com/css?family=Cute+Font" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css">
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <base href="/Limite-web/" /> 
   </head>
   <body>
 
@@ -43,7 +43,8 @@
 
         <div class="row justify-content-center">
 
-        <form class="w-100" method="POST" action="index.html" method="post">
+        <form class="w-100" method="POST">
+       
 
           <div class="row justify-content-center">
             <input class="mt-2 mb-2 input col-10" type="text" name="email" id="email" placeholder="Entrez votre mail">
@@ -54,7 +55,12 @@
           </div>
 
           <div class="row justify-content-center ok">
-            <input id="bouton" class="fs-3vh-r-valider mt-2 mb-2 input col-md-3 col-xs-6" type="submit" name="" value="Connection">
+          <a th:href="@{ connection}" 
+          id="bouton" 
+          class="fs-3vh-r-valider mt-2 mb-2 input col-md-3 col-xs-6" 
+          type="submit" 
+          name="" value='connexion' ></a>
+            <input>
           </div>
 
         </form>
@@ -71,6 +77,6 @@
       </footer>
 
     </div>
-    <script type="text/javascript" src="javascript-connection.js"></script>
+    <script type="text/javascript" src="javascript-connexion.js"></script>
   </body>
 </html>
