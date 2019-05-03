@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <title>Login Limite Limite</title>
@@ -63,7 +63,7 @@
 
 
       <ul class="w-100 row justify-content-around">
-        <button class="fs-3vh-r w-25"><a th:href="inscription.html">Inscription</a></button>
+        <button class="fs-3vh-r w-25"><a th:href="@{limite-web/inscription}">Inscription</a></button>
         <button class="fs-3vh-r w-25"><a th:href="#">Rappel mot de passe</a></button>
       </ul>
 
@@ -71,6 +71,6 @@
       </footer>
 
     </div>
-    <script type="text/javascript" src="javascriptLogin.js"></script>
+    <script type="text/javascript" src="javascript-connection.js"></script>
   </body>
 </html>
