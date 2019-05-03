@@ -15,10 +15,8 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 	
-	//Pour gérer les fichiers ressources en tant que tel:
+	//Pour gï¿½rer les fichiers ressources en tant que tel:
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
-		registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
 		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/images/");
 		}
 
