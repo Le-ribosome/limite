@@ -1,11 +1,8 @@
 package fr.formation.joueur;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -41,7 +38,6 @@ public class Joueur extends Utilisateur {
 	 * string nom, prenom, pseudo, password , mail et age egalement
 	 * propre au joueur : équipe, score, main, cartes jouées d'un tour
 	 */
-
 
    
 
