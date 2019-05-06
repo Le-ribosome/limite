@@ -39,7 +39,7 @@ public class ConnexionController {
 			//Compare le password crypté et le password en base: 
 			if (passwordEncoder.matches(password, joueur.getPassword())) {
 				session.setAttribute("joueur", joueur);
-				return "redirect: ./profil-joueur";
+				return "redirect: ./profil";
 			}
 			return "redirect: ./connexion-joueur";
 		}

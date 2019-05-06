@@ -1,10 +1,195 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Profil joueur</title>
-  </head>
-  <body>
-	Bravo
-  </body>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="profil.css">
+</head>
+
+<body>
+
+	<header>
+		<h1>Limite Limite</h1>
+		<h2>- Profil du joueur -</h2>
+	</header>
+	
+	<div class="user">
+		<div class="row">
+			<div class="col-4">
+				<img class="img-fluid"
+					src="https://randomuser.me/api/portraits/lego/1.jpg" alt="">
+
+			</div>
+			<div class="col-8">
+				<ul class="infosUser">
+
+					<li class="Username">[[${joueur.pseudo}]]</li>
+					<li class="name">George Sand</li>
+					<li class="email">Georgie@jacques.fr</li>
+				</ul>
+			</div>
+		</div>
+		<div class="statistiques">
+			<div class="row">
+				<div class="col-8">
+					<div class="row-2">
+						<h2>- Jeu -</h2>
+					</div>
+					<div class="row">Nombre de parties jouées :</div>
+					<div class="row">Nombre de parties gagnées :</div>
+					<div class="row">Parties en pause :</div>
+					<div class="row">Score :</div>
+				</div>
+				<div class="col-4 ">
+
+					- Liste d'amis -
+
+					<section id="cartes">
+						<div class="cartes-utilisateurs">
+							<div class="utilisateur">
+								<img class="photo"
+									srcset="https://randomuser.me/api/portraits/lego/3.jpg">
+								<ul class="infos-surbrillance">
+									<li class="name">Leanne Graham</li>
+									<li class="email">Sincere@april.biz</li>
+								</ul>
+							</div>
+							<div class="username">
+								<p>Bret</p>
+								<p>Score : 1</p>
+							</div>
+						</div>
+
+						<div class="cartes-utilisateurs">
+							<div class="utilisateur">
+								<img class="photo"
+									srcset="https://randomuser.me/api/portraits/lego/4.jpg">
+								<ul class="infos-surbrillance">
+									<li class="name">Ervin Howell</li>
+									<li class="email">Shanna@melissa.tv</li>
+								</ul>
+							</div>
+							<div class="username">
+								<p>Antonette</p>
+								<p>Score : 2</p>
+							</div>
+						</div>
+
+						<div class="cartes-utilisateurs">
+							<div class="utilisateur">
+								<img class="photo"
+									srcset="https://randomuser.me/api/portraits/lego/4.jpg">
+								<ul class="infos-surbrillance">
+									<li class="name">Ervin Howell</li>
+									<li class="email">Shanna@melissa.tv</li>
+								</ul>
+							</div>
+							<div class="username">
+								<p>Antonette</p>
+								<p>Score : 2</p>
+							</div>
+						</div>
+
+						<div class="cartes-utilisateurs">
+							<div class="utilisateur">
+								<img class="photo"
+									srcset="https://randomuser.me/api/portraits/lego/4.jpg">
+								<ul class="infos-surbrillance">
+									<li class="name">Ervin Howell</li>
+									<li class="email">Shanna@melissa.tv</li>
+								</ul>
+							</div>
+							<div class="username">
+								<p>Antonette</p>
+								<p>Score : 2</p>
+							</div>
+						</div>
+
+						<div class="cartes-utilisateurs">
+							<div class="utilisateur">
+								<img class="photo"
+									srcset="https://randomuser.me/api/portraits/lego/4.jpg">
+								<ul class="infos-surbrillance">
+									<li class="name">Ervin Howell</li>
+									<li class="email">Shanna@melissa.tv</li>
+								</ul>
+							</div>
+							<div class="username">
+								<p>Antonette</p>
+								<p>Score : 2</p>
+							</div>
+						</div>
+
+						<div class="cartes-utilisateurs">
+							<div class="utilisateur">
+								<img class="photo"
+									srcset="https://randomuser.me/api/portraits/lego/4.jpg">
+								<ul class="infos-surbrillance">
+									<li class="name">Ervin Howell</li>
+									<li class="email">Shanna@melissa.tv</li>
+								</ul>
+							</div>
+							<div class="username">
+								<p>Antonette</p>
+								<p>Score : 2</p>
+							</div>
+						</div>
+
+						<div class="cartes-utilisateurs">
+							<div class="utilisateur">
+								<img class="photo"
+									srcset="https://randomuser.me/api/portraits/lego/4.jpg">
+								<ul class="infos-surbrillance">
+									<li class="name">Ervin Howell</li>
+									<li class="email">Shanna@melissa.tv</li>
+								</ul>
+							</div>
+							<div class="username">
+								<p>Antonette</p>
+								<p>Score : 2</p>
+							</div>
+						</div>
+
+						<div class="cartes-utilisateurs">
+							<div class="utilisateur">
+								<img class="photo"
+									srcset="https://randomuser.me/api/portraits/lego/4.jpg">
+								<ul class="infos-surbrillance">
+									<li class="name">Ervin Howell</li>
+									<li class="email">Shanna@melissa.tv</li>
+								</ul>
+							</div>
+							<div class="username">
+								<p>Antonette</p>
+								<p>Score : 2</p>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<footer class="row">
+		<div class="col-6">
+			<a href="">Changer de mot de passe ?</a>
+		</div>
+		<div class="col-6">
+			<a href="">Changer l'adresse email ?</a>
+		</div>
+
+	</footer>
+	<script src="javascript.js"></script>
+
+
+</body>
+
 </html>
