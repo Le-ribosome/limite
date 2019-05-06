@@ -35,7 +35,6 @@ import fr.formation.jeu.Participation;
 })
 
 
-
 public class Joueur extends Utilisateur {
 	// int id definit dans utilisateur
 	/*
