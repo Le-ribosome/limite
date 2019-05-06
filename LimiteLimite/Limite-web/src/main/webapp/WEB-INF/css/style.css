@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 *{
   padding: 0;
   margin: 0;
-  font-family: 'Cute Font', cursive;
+  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 
@@ -42,7 +42,7 @@ header{
 }
 
 h2{
-  font-size: 4vw;
+  font-size: 3vw;
   text-align: center;
   margin: 0 !important;
   display: block;
@@ -90,7 +90,7 @@ h2{
 }
 
 .mt-2.mb-2.input.col-10{
-  font-size: 3vh;
+  font-size: 2vh;
 }
 
 #remember{
@@ -169,10 +169,10 @@ ul :nth-child(2) > a{
 }
 
 .fs-3vh-r{
-  font-size: 3vh;
+  font-size: 2vh;
 }
 .fs-3vh-r-valider{
-  font-size: 3vh;
+  font-size: 2vh;
 }
 
 @media (min-width: 1300px) {

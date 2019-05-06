@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+<base href="/limite-web/" />
 <meta charset="utf-8">
 <title>Creer carte Limite Limite</title>
 <link href="https://fonts.googleapis.com/css?family=Cute+Font"
@@ -89,31 +90,46 @@
 
 		<section class="mb-3 pt-2 pb-2 formulaire2 ">
 			<table class="table table-striped">
-				<caption>
-					<h4>Les cartes</h4>
-				</caption>
 				<thead>
 					<tr>
 						<th>Carte à trou</th>
 						<th>Action</th>
-						<th>Carte mot</th>
-						<th>Action</th>
+
 					</tr>
 				</thead>
 				<tbody>
 
-					<tr>
-						<td th:each="carte : ${ cartesphrases }"><a>[[${
-								carte.phrase }]]</a></td>
+					<tr th:each="carte : ${ cartesphrases }">
+						<td><a>[[${ carte.phrase }]]</a></td>
 
 						<td><a
 							th:href="@{ cartes/supprimer-cartephrase(id=${carte.id}) }"
 							class="btn btn-danger">Supprimer</a> <a
 							th:href="@{ cartes/modifier-cartephrase(id=${carte.id}) }"
 							class="btn btn-primary">Modifier</a></td>
+					</tr>
 
-						<td th:each="carte : ${ cartesmotsdefinis }"><a>[[${carte.mot
-								}]]</a></td>
+
+				</tbody>
+						</table>
+				</section>
+			
+
+				<div class="container">
+
+		<section class=" mb-3 pt-2 pb-2 formulaire2 ">
+	
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Carte mot</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="carte : ${ cartesmotsdefinis }">
+						<td><a>[[${carte.mot }]]</a></td>
 
 						<td><a
 							th:href="@{ cartes/supprimer-cartemot(id=${carte.id}) }"
@@ -121,13 +137,11 @@
 							th:href="@{ cartes/modifier-cartemot(id=${carte.id}) }"
 							class="btn btn-primary">Modifier</a></td>
 					</tr>
-
-
 				</tbody>
 			</table>
+
 		</section>
-
-
-		<footer> </footer>
+	</div>
+	<footer> </footer>
 </body>
 </html>
