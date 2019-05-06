@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<base href="/Limite-web/" />
+<meta charset="utf-8">
+<title>Creer carte Limite Limite</title>
+<link href="https://fonts.googleapis.com/css?family=Cute+Font"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css"> -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<link type="text/css" rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+
+	<div class="container w-50">
+
+		<header class="justify-content-around" id="header">
+
+			<div class="row p-3 x-content-around">
+
+
+				<div class="col-md-3 col-sm-12">
+					<img src="images/woolly-mc.png" alt="" class="img-fluid">
+				</div>
+
+				<div class="col-md-6 col-sm-12 align-self-center">
+					<h2>Modification d'une carte phrase</h2>
+				</div>
+
+				<div class="col-md-3 d-none d-md-block">
+					<img src="images/woolly-mc.png" alt="" class="img-fluid">
+				</div>
+
+			</div>
+
+		</header>
+
+		<div id="erreur"></div>
+
+		<section class="mb-3 pt-2 pb-2 formulaire">
+
+			<div class="row justify-content-center">
+
+				<form class="w-100" method="post"
+					action="cartes/ajouter-cartemot">
+
+					<div class="row justify-content-center">
+						<input class="mt-2 mb-2 input col-10" type="text"
+							name="mot" id="cartemot"
+							placeholder=" votre mot"
+									th:value="${ cartemotdefini?.mot }" />
+
+					
+					
+					</div>
+					<ul class="w-100 row justify-content-around">
+						<button class="fs-3vh-r w-25">Ajouter la carte</button>
+
+					</ul>
+					</form>
+					
+
+			</div>
+
+		</section>
+
+	</div>
+
+	
+	<footer> </footer>
+</body>
+</html>

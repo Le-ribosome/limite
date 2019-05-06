@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<base href="/limite-web/" />
+<base href="/Limite-web/" />
 <meta charset="utf-8">
 <title>Creer carte Limite Limite</title>
 <link href="https://fonts.googleapis.com/css?family=Cute+Font"
@@ -60,16 +60,25 @@
 
 					<div class="row justify-content-center">
 						<input class="mt-2 mb-2 input col-10" type="text"
-							name="cartephrase" id="cartephrase"
+							name="phrase" id="cartephrase"
 							placeholder="Entrez votre phrase à trou">
+							<!-- <input class="mt-2 mb-2 input col-10" type="text"
+							name="temps" id="tempscartephrase"
+							placeholder="Entrez le temps additionnel nécessaire"> -->
+							<input class="mt-2 mb-2 input col-10" type="text"
+							name="points" id="pointscartephrase"
+							placeholder="Entrez la valeur (points)">
 					</div>
 					<ul class="w-100 row justify-content-around">
 						<button class="fs-3vh-r w-25">Entrer</button>
 
 					</ul>
+					</form>
+					<form class="w-100" method="post"
+					action="cartes/ajouter-cartemot">
 					<div class="row justify-content-center">
 						<input class="mt-2 mb-2 input col-10" type="text"
-							name="cartemotdefini" id="cartemotdefini"
+							name="mot" id="cartemotdefini"
 							placeholder="Entrez votre mot">
 					</div>
 

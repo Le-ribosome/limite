@@ -37,7 +37,7 @@ public class CartesController {
 	public String add(@Valid @ModelAttribute CartePhrase cartephrase, BindingResult result) {
 		if (result.hasErrors()) { // si n'a pas été validé
 
-			return "cartes";
+			return "redirect:/cartes";
 		}
 		System.out.println("ETAPE 2");
 		daoCartePhrase.save(cartephrase);
@@ -52,7 +52,8 @@ public class CartesController {
 		}
 		System.out.println("ETAPE 2");
 		daoCarteMotDefini.save(cartemotdefini);
-		return "cartes";
+		return "redirect:/cartes";
+		
 	}
 
 	@GetMapping("/supprimer-cartephrase")

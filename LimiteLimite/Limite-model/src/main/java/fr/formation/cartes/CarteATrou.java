@@ -9,9 +9,9 @@ public class CarteATrou extends Carte {
 	
 	//int id defini dans Carte
 	//String categorie defini dans Carte
-	@NotEmpty
-	protected int temps;
-	@NotEmpty
+
+	protected int temps =30;
+
 	protected int points;
 	
 	
