@@ -6,6 +6,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,25 +32,17 @@ public class InscriptionController {
 	@PostMapping
 	public String inscription(@ModelAttribute Joueur joueur) {
 		
-		//Encryptage du mot de passe:
-		String key ="soprasteria";
+		//Mot de passe en clair entré par l'user, à encrypter: 
 		String passwordClear=joueur.getPassword();
 		
-		try
-		{
-			Key clef = new SecretKeySpec(key.getBytes("ISO-8859-2"),"Blowfish");
-			Cipher cipher=Cipher.getInstance("Blowfish");
-			cipher.init(Cipher.ENCRYPT_MODE,clef);
-			joueur.setPassword(new String(cipher.doFinal(passwordClear.getBytes())));
-		}
-		catch (Exception e)
-		{
-			
-		}
+		//Crypte le password entrée par l'user lors de l'inscription
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		joueur.setPassword(passwordEncoder.encode(passwordClear));
 			
 		//Enregistrement en base: 
 		daoJoueur.save(joueur);
 		
-		return "redirect: ./connexion";
+		return "inscription-joueur";
+//		return "redirect: ./connexion";
 	}
 }
