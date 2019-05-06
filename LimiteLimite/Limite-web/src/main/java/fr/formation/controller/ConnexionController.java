@@ -27,34 +27,24 @@ public class ConnexionController {
 	public String connexion(HttpSession session, @RequestParam String mail, @RequestParam String password) {
 		
 		Joueur joueur = daoJoueur.findByMail(mail);
-		System.out.println("submit ok");
 		
 		// verification de l'existence du joueur
 		if (joueur != null) {
-			
-			System.out.println("joueur pas null");
 			
 			//Cryptage du mdp entré par l'user et comparer les 2 mdp cryptés: 
 			
 			//Crypte la variable password entrée par l'user
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-			System.out.println("mdp encrypté: " +password);
-			
-			System.out.println(passwordEncoder.matches(password, joueur.getPassword()));
-			System.out.println("mdp entré: " +passwordEncoder.encode(password)+ " et mdp en base: " +joueur.getPassword());
-
 			//Compare le password crypté et le password en base: 
 			if (passwordEncoder.matches(password, joueur.getPassword())) {
-				System.out.println("les mdp sont égaux");
 				session.setAttribute("joueur", joueur);
-				return "profil-joueur";
+				return "redirect: ./profil-joueur";
 			}
-			System.out.println("mdp pas égaux");
-			return "connexion-joueur";
+			return "redirect: ./connexion-joueur";
 		}
 		System.out.println("joueur null");
-		return "connexion-joueur";
+		return "redirect: ./connexion-joueur";
 
 	}
 

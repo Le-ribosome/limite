@@ -1,10 +1,5 @@
 package fr.formation.controller;
 
-import java.security.Key;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -42,7 +37,6 @@ public class InscriptionController {
 		//Enregistrement en base: 
 		daoJoueur.save(joueur);
 		
-		return "inscription-joueur";
-//		return "redirect: ./connexion";
+		return "redirect: ./connexion";
 	}
 }
