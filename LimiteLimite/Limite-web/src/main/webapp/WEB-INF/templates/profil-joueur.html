@@ -10,7 +10,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="profil.css">
+<link rel="stylesheet" href="css/profilStyle.css">
 </head>
 
 <body>
@@ -21,21 +21,21 @@
 	</header>
 	
 	<div class="user">
+	
 		<div class="row">
 			<div class="col-4">
 				<img class="img-fluid"
 					src="https://randomuser.me/api/portraits/lego/1.jpg" alt="">
-
 			</div>
 			<div class="col-8">
 				<ul class="infosUser">
-
 					<li class="Username">[[${joueur.pseudo}]]</li>
-					<li class="name">George Sand</li>
-					<li class="email">Georgie@jacques.fr</li>
+					<li class="name">[[${joueur.prenom}]] - [[${joueur.nom}]]</li>
+					<li class="email">[[${joueur.mail}]]</li>
 				</ul>
 			</div>
 		</div>
+		
 		<div class="statistiques">
 			<div class="row">
 				<div class="col-8">
@@ -187,7 +187,7 @@
 		</div>
 
 	</footer>
-	<script src="javascript.js"></script>
+	<script src="javascript-style.js"></script>
 
 
 </body>
