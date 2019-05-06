@@ -12,8 +12,8 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int id;
-	protected String nom;
-	protected String prenom;
+	protected String nom="";
+	protected String prenom="";
 	protected String pseudo;
 	protected String password;
 	protected String mail;

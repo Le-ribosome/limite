@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotEmpty;
 
 import com.sun.istack.NotNull;
 
@@ -43,7 +42,6 @@ public class Joueur extends Utilisateur {
 
    @Column (name="JOU_SCORE")
    @NotNull
-   @NotEmpty
    private int score;
     
     

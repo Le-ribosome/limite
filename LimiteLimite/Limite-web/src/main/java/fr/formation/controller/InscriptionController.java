@@ -5,6 +5,7 @@ import java.security.Key;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,7 @@ import fr.formation.joueur.Joueur;
 @RequestMapping("/inscription")
 public class InscriptionController {
 
+	@Autowired
 	private IDAOJoueur daoJoueur;
 	
 	@GetMapping
@@ -45,7 +47,6 @@ public class InscriptionController {
 			
 		}
 			
-		
 		//Enregistrement en base: 
 		daoJoueur.save(joueur);
 		
