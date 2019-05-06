@@ -133,11 +133,13 @@
           confirmationInscription.appendChild(glyph);
           //on insère après le header:
           document.getElementById('header').after(confirmationInscription);
+          
+          document.querySelector('form').submit();
 
           // On l'efface 3 secondes plus tard
           setTimeout(function() {
             confirmationInscription.remove();
-            window.location.href = "login2.html";
+//            window.location.href = "login2.html";
           },2000);
 
       }

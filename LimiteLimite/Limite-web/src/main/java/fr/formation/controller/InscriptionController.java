@@ -42,7 +42,7 @@ public class InscriptionController {
 		}
 		catch (Exception e)
 		{
-		
+			
 		}
 			
 		

@@ -23,7 +23,7 @@ public class ConnexionController {
 		return "connexion-joueur";
 	}
 
-	@PostMapping
+	@PostMapping("/connexion")
 	public String connexion(HttpSession session, @RequestParam String mail, @RequestParam String password) {
 		Joueur joueur = daoJoueur.findByMail(mail);
 	
