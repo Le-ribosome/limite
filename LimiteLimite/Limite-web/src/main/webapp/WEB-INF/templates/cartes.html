@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Creer carte Limite Limite</title>
-    <link href="https://fonts.googleapis.com/css?family=Cute+Font" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css"> -->
-    <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<head>
+<meta charset="utf-8">
+<title>Creer carte Limite Limite</title>
+<link href="https://fonts.googleapis.com/css?family=Cute+Font"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css"> -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-  <link type="text/css" rel="stylesheet" href="css/style.css">
-  </head>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+</head>
 
-  <body>
+<body>
 
-    <!-- <div id="pluieDeChat">
+	<!-- <div id="pluieDeChat">
       <img id="chat1" src="chat/chat1.png" alt="">
       <img id="chat2" src="chat/chat2.png" alt="">
       <img id="chat3" src="chat/chat3.jpg" alt="">
@@ -22,67 +25,109 @@
       <img id="chat4" src="chat/chat5.jpg" alt="">
     </div> -->
 
-    <div class="container">
+	<div class="container w-50">
 
-      <header class="justify-content-around" id="header">
+		<header class="justify-content-around" id="header">
 
-        <div class="row p-3 x-content-around">
-
-
-          <div class="col-md-3 col-sm-12">
-              <img src="images/woolly-mc.png" alt="" class="img-fluid">
-          </div>
-
-          <div class="col-md-6 col-sm-12 align-self-center">
-              <h2>Création d'une carte</h2>
-          </div>
-
-          <div class="col-md-3 d-none d-md-block">
-            <img src="images/woolly-mc.png" alt="" class="img-fluid">
-          </div>
-
-        </div>
-
-      </header>
-
-      <div id="erreur">
-      </div>
-
-      <section class="mb-3 pt-2 pb-2 formulaire">
-
-        <div class="row justify-content-center">
-
-          <form class="w-100" method="post">
-
-            <div class="row justify-content-center">
-              <input class="mt-2 mb-2 input col-10" type="text" name="cartephrase" id="cartephrase" placeholder="Entrez votre phrase à trou">
-            </div>
-      <ul class="w-100 row justify-content-around">
-        <button class="fs-3vh-r w-25"><a href="login2.html">Soumettre ma proposition</a></button>
-     
-      </ul>
-            <div class="row justify-content-center">
-              <input class="mt-2 mb-2 input col-10" type="text" name="cartemotdefini" id="cartemotdefini" placeholder="Entrez votre mot">
-            </div>
-
-      <ul class="w-100 row justify-content-around">
-        <button class="fs-3vh-r w-25"><a href="login2.html">Soumettre ma proposition</a></button>
-      </ul>
-
-          </form>
-
-        </div>
-
-      </section>
-
-   
-
-      <footer>
-
-      </footer>
+			<div class="row p-3 x-content-around">
 
 
-    </div>
+				<div class="col-md-3 col-sm-12">
+					<img src="images/woolly-mc.png" alt="" class="img-fluid">
+				</div>
 
-  </body>
+				<div class="col-md-6 col-sm-12 align-self-center">
+					<h2>Création d'une carte</h2>
+				</div>
+
+				<div class="col-md-3 d-none d-md-block">
+					<img src="images/woolly-mc.png" alt="" class="img-fluid">
+				</div>
+
+			</div>
+
+		</header>
+
+		<div id="erreur"></div>
+
+		<section class="mb-3 pt-2 pb-2 formulaire">
+
+			<div class="row justify-content-center">
+
+				<form class="w-100" method="post"
+					action="cartes/ajouter-cartephrase">
+
+					<div class="row justify-content-center">
+						<input class="mt-2 mb-2 input col-10" type="text"
+							name="cartephrase" id="cartephrase"
+							placeholder="Entrez votre phrase à trou">
+					</div>
+					<ul class="w-100 row justify-content-around">
+						<button class="fs-3vh-r w-25">Entrer</button>
+
+					</ul>
+					<div class="row justify-content-center">
+						<input class="mt-2 mb-2 input col-10" type="text"
+							name="cartemotdefini" id="cartemotdefini"
+							placeholder="Entrez votre mot">
+					</div>
+
+					<ul class="w-100 row justify-content-around">
+						<button class="fs-3vh-r w-25">Entrer</button>
+					</ul>
+
+				</form>
+
+			</div>
+
+		</section>
+
+	</div>
+
+	<div th:fragment="content">
+
+
+		<section class="mb-3 pt-2 pb-2 formulaire2 ">
+			<table class="table table-striped">
+				<caption>
+					<h4>Les cartes</h4>
+				</caption>
+				<thead>
+					<tr>
+						<th>Carte à trou</th>
+						<th>Action</th>
+						<th>Carte mot</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td th:each="carte : ${ cartesphrases }"><a>[[${
+								carte.phrase }]]</a></td>
+
+						<td><a
+							th:href="@{ cartes/supprimer-cartephrase(id=${carte.id}) }"
+							class="btn btn-danger">Supprimer</a> <a
+							th:href="@{ cartes/modifier-cartephrase(id=${carte.id}) }"
+							class="btn btn-primary">Modifier</a></td>
+
+						<td th:each="carte : ${ cartesmotsdefinis }"><a>[[${carte.mot
+								}]]</a></td>
+
+						<td><a
+							th:href="@{ cartes/supprimer-cartemot(id=${carte.id}) }"
+							class="btn btn-danger">Supprimer</a> <a
+							th:href="@{ cartes/modifier-cartemot(id=${carte.id}) }"
+							class="btn btn-primary">Modifier</a></td>
+					</tr>
+
+
+				</tbody>
+			</table>
+		</section>
+
+
+		<footer> </footer>
+</body>
 </html>
