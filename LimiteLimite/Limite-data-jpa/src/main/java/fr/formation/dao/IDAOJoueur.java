@@ -6,6 +6,6 @@ import fr.formation.joueur.Joueur;
 
 public interface IDAOJoueur  extends JpaRepository<Joueur, Integer> {
 
-	Joueur findByEmail(String email);
+	Joueur findByMail(String mail);
 
 }

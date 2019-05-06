@@ -20,17 +20,17 @@ public class ConnexionController {
 	}
 
 	@PostMapping
-	public String connexion(@RequestParam String email, @RequestParam String password) {
-		Joueur joueur = daoJoueur.findByEmail(email);
+	public String connexion(@RequestParam String mail, @RequestParam String password) {
+		Joueur joueur = daoJoueur.findByMail(mail);
 		// verification de l'existence du joueur
 		if (joueur != null) {
 			if (password == joueur.getPassword()) {
-				return "connexion";
+				return "profil-joueur";
 			}
-			return "profil-joueur";
+			return "connexion";
 		}
 
-		return "profil-joueur";
+		return "connexion";
 
 	}
 
