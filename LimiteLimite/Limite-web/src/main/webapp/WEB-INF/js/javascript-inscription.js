@@ -122,9 +122,6 @@
             password:document.getElementById("password1").value
           }
 
-          const ajax = new Ajax('https://jsonplaceholder.typicode.com/users');
-          ajax.post(data).then(json => console.log(json));
-
           // On affiche le message
           //creation de la div verte:
           const confirmationInscription = document.createElement("div");

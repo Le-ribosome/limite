@@ -20,6 +20,8 @@ public class InscriptionController {
 			@RequestParam String username, 
 			@RequestParam String password ) {
 		
+		
+		
 		return "connexion-joueur";
 	}
 }
