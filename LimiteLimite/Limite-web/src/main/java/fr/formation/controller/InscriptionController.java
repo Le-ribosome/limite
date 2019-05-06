@@ -50,6 +50,6 @@ public class InscriptionController {
 		//Enregistrement en base: 
 		daoJoueur.save(joueur);
 		
-		return "connexion-joueur";
+		return "redirect: ./connexion";
 	}
 }

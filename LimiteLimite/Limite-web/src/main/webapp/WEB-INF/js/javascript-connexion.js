@@ -1,24 +1,7 @@
-//🖕
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   let mail = {
     "type": "mail",
-    "validation": false,
+    "validation": false,
     "idInput": "email",
     "idBouton": "bouton",
     "idEltRajout": "poupi",
@@ -31,7 +14,7 @@
 
   let password = {
     "type": "password",
-    "validation": false,
+    "validation": false,
     "idInput": "password",
     "idBouton": "bouton",
     "idEltRajout": "poupo",
@@ -91,6 +74,9 @@
         console.log("jedisparait !!");
         var divRouge = document.getElementById("erreur");
         divRouge.style.display="none";
+        
+        //On peut donc permettre le submit: 
+        document.querySelector('form').submit();
       }
 
     });

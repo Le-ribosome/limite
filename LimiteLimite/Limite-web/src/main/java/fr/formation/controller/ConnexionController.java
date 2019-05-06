@@ -26,16 +26,18 @@ public class ConnexionController {
 	@PostMapping("/connexion")
 	public String connexion(HttpSession session, @RequestParam String mail, @RequestParam String password) {
 		Joueur joueur = daoJoueur.findByMail(mail);
-	
+		System.out.println("Je suis passé par la");
 		// verification de l'existence du joueur
 		if (joueur != null) {
+			System.out.println("Par là aussi");
 			if (password.equals( joueur.getPassword())) {
 				session.setAttribute("joueur", joueur);
 				return "profil-joueur";
 			}
+			System.out.println("Le mdp est faux");
 			return "connexion";
 		}
-
+		System.out.println("Le joueur est nul");
 		return "connexion";
 
 	}

@@ -134,6 +134,7 @@
           //on insère après le header:
           document.getElementById('header').after(confirmationInscription);
           
+          //Permets l'envoi du formulaire bien qu'il y ait un preventDefault
           document.querySelector('form').submit();
 
           // On l'efface 3 secondes plus tard
